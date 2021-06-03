@@ -1,5 +1,4 @@
-#include <initilization of ports.h>
-#include<D:\2nd electrical 2nd semster>
+#include<tm4c123gh6pm.h>
 #include<stdio.h>
 #include<stdint.h>
 
