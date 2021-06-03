@@ -2,7 +2,6 @@
 #include<stdio.h>
 #include<stdint.h>
 
-void PORTA_INIT();
 void PORTB_INIT();
 void PORTF_INIT();
 void distance(double d);
@@ -42,6 +41,4 @@ int main()
         GPIO_PORTF_AFSEL_R = 0x00;
         GPIO_PORTF_DEN_R = 0x1F;
         GPIO_PORTF_DATA_R = 0x0002;
-
-
     }
