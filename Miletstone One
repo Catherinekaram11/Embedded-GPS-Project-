@@ -45,6 +45,12 @@ int main()
 			delay(50);
 						
 		}
+		
+	//to calculate the distance, we will use exact coordinates as a test
+	long double lat1 = 30.101773414316938, long1 = 31.33362007982015;
+    	long double lat2 = 30.102314652503107, long2 = 31.33418651261097;
+	long double accdistance = DistanceTill100(lat1, long1, lat2, long2);
+        printf("the total distance:%lfm\n", accdistance);
 }
 
 void LEDOn ( double accdistance )
