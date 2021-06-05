@@ -10,6 +10,13 @@ void delay(double sec);
 void LCD_command(char com);
 void LCD_Data(char data);
 void intialization();
+void LEDOn ( double accdistance );
+void PORTA_INIT();
+void PORTF_INIT();
+uint8_t UART2_READ();
+long double toRadians(const long double degree);
+long double Calcdistance(long double lat1, long double long1, long double lat2, long double long2);
+double Distancetill100 (long double lat1,long double lat2,long double long1,long double long2);
 
 int main()
 {
