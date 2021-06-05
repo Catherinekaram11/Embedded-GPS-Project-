@@ -101,6 +101,15 @@ long double Calcdistance(long double lat1, long double long1,
     // Haversine Formula
     long double dlong = long2 - long1;
     long double dlat = lat2 - lat1;
+    
+    if (dlong < 0)
+    {
+        dlong *= -1;
+    }
+    if (dlat < 0)
+    {
+        dlat *= -1;
+    }
 
     long double distance = pow(sin(dlat / 2), 2) +
         cos(lat1) * cos(lat2) *
