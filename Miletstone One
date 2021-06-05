@@ -1,0 +1,48 @@
+#include<E:\C++ programs\test\tm4c123gh6pm.h>
+#include<stdio.h>
+#include<stdint.h>
+
+void PORTB_INIT();
+void PORTD_INIT_UART();
+
+int main()
+{
+  
+}
+
+void PORTB_INIT() //Port B initalization
+{
+    SYSCTL_RCGCGPIO_R |= 0x00000002;
+    while((SYSCTL_PRGPIO_R&0x00000002)==0){};
+    GPIO_PORTB_LOCK_R=0x4C4F434B;
+    GPIO_PORTB_CR_R = 0xFF;
+    GPIO_PORTB_DIR_R = 0xFF;
+    GPIO_PORTB_DATA_R = 0x00;
+    GPIO_PORTB_DEN_R = 0xFF;
+    GPIO_PORTB_AFSEL_R= 0x00;
+    GPIO_PORTB_AMSEL_R= 0x00;
+    GPIO_PORTB_PCTL_R= 0x00000000;  
+}
+void PORTD_INIT_UART()
+{
+    SYSCTL_RCGCUART_R |= 0x00000008;
+    SYSCTL_RCGCGPIO_R |= 0x00000008;
+    GPIO_PORTD_LOCK_R=0x4C4F434B;
+    GPIO_PORTD_CR_R = 0xC0;
+    GPIO_PORTD_DIR_R = 0x00;
+    GPIO_PORTD_DEN_R = 0xC0;
+    GPIO_PORTD_AFSEL_R= 0xC0;
+    GPIO_PORTD_AMSEL_R= 0x00;
+    GPIO_PORTD_PCTL_R= 0x11000000;
+    UART2_CTL_R &=~0x0004;
+    UART2_IBRD_R = 520;
+    UART2_FBRD_R = 53;
+    UART2_LCRH_R = 0x0070;
+    UART2_CTL_R = 0x0301;
+}
+uint8_t UART2_READ()
+{
+    PORTD_INIT_UART();
+    while((UART2_FR_R&0x10)!=0){}
+    return (uint8_t)(UART2_DR_R&0x000000FF);
+}
