@@ -106,7 +106,7 @@ long double Calcdistance(long double lat1, long double long1,
         cos(lat1) * cos(lat2) *
         pow(sin(dlong / 2), 2);
 
-    distance = 2 * asin(sqrt(distance));
+    distance = 2 * atan2(sqrt(distance), sqrt(distance - 1);
 
     // Radius of Earth in Kilometers, R = 6371
    
