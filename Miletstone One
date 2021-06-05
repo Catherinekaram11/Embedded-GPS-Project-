@@ -164,6 +164,7 @@ long double Calcdistance(long double lat1, long double long1,
 
 double Distancetill100 (long double lat1,long double lat2,long double long1,long double long2)
 {
+
     long double accDistance = Calcdistance(lat1 , long1, lat2, long2);
     printf("%lf\n", accDistance);
     while (accDistance < 100)
@@ -171,7 +172,7 @@ double Distancetill100 (long double lat1,long double lat2,long double long1,long
         delay();
         lat1 = lat2;
         long1 = long2;
-        scanf("%lf %lf", &lat2 , &long2);
+        scanf("%lf %lf", &lat2 , &long2);   //here we took the input from the user to test the code, but in the second milestone it will be from the GPS
         accDistance += Calcdistance(lat1, long1, lat2, long2);
         printf("%lf\n", accDistance);
     }
