@@ -6,10 +6,38 @@
 
 void PORTB_INIT();
 void PORTD_INIT_UART();
+void delay(double sec);
+void LCD_command(char com);
+void LCD_Data(char data);
+void intialization();
 
 int main()
 {
-  
+    intialization();
+		while(1)
+		{
+			PORTF_INIT();
+			LCD_command(0x01); 
+			LCD_command(0x80);
+			delay(50);
+			LCD_Data('D');
+			delay(1);
+			LCD_Data('I');
+			delay(1);
+			LCD_Data('S');
+			delay(1);
+			LCD_Data('T');
+                        delay(1);
+                        LCD_Data('A');
+                        delay(1);
+                        LCD_Data('N');
+                        delay(1);
+                        LCD_Data('C');
+                        delay(1);
+                        LCD_Data('E');
+			delay(50);
+						
+		}
 }
 
 void LEDOn ( double accdistance )
@@ -129,3 +157,30 @@ long double Calcdistance(long double lat1, long double long1,
 
 double Distancetill100 (double accdistance)
 {}
+//delay function
+void delay(double sec)
+{
+    unsigned int i,j;
+    for(i=0;i<sec;i++)
+    for(j=0;j<100;j++);
+}
+//LCD intialization function
+void intialization() 
+{
+    PORTA_INIT();
+    PORTB_INIT();
+    delay(10);
+		LCD_command(0x30);
+    delay(0.5);
+		LCD_command(0x30);
+    delay(0.5);
+    LCD_command(0x30);
+    delay(0.5);
+    LCD_command(0x38);
+    delay(0.5);
+    LCD_command(0x06);
+    delay(0.5);
+    LCD_command(0x01);
+    delay(0.5);
+    LCD_command(0x0F);
+}
