@@ -24,7 +24,7 @@ void sliceInt(long double s);
 int main()
 {
     	PORTD_INIT_UART();
-	// testing for first milestine only
+	// testing for first milestone only
 	long double lat1 = 30.101773414316938, long1 = 31.33362007982015;
   	long double lat2 = 30.102314652503107, long2 = 31.33418651261097;
 	long double accdistance = Distancetill100(lat1, long1, lat2, long2);
@@ -32,7 +32,7 @@ int main()
     	intialization();
 	LCD_command(0x01); 
 	LCD_command(0x80);	
-	// parsing the integer into array of strings to be written in the 
+	// parsing the integer into array of char to be written in the LCD
     	sliceInt(accdistance);
 	return 0;
 }
