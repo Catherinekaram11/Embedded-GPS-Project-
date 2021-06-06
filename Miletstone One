@@ -176,18 +176,19 @@ double Distancetill100 (long double lat1,long double lat2,long double long1,long
     return accDistance;
 
 }
-//delay function
+//delay function 1
 void delay_ms(double sec)
 {
     unsigned int i,j;
     for(i=0;i<sec;i++)
     for(j=0;j<1000;j++){};
 }
+//delay function 2
 void delay_micros(double sec)
 {
-		unsigned int i , j;
-		for(i=0;i<sec;i++)
-		for(j=0;j<5;j++){};
+	unsigned int i , j;
+	for(i=0;i<sec;i++)
+	for(j=0;j<5;j++){};
 }
 //LCD command function
 void LCD_command(char com) 
@@ -223,7 +224,6 @@ void intialization()
     LCD_command(0x30);
     delay_ms(1);
     LCD_command(0x30);
-	
     LCD_command(0x38);
     LCD_command(0x06);
     LCD_command(0x01);
