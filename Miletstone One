@@ -24,6 +24,9 @@ int main()
 		while(1)
 		{
 			PORTF_INIT();
+			// double calcdist = Distancetill100 () 
+			//this input passed for the Distancetill100 function will be taken from the gps in the second milestone.
+			// then calcdist will be passed to toString function then will be passed to lcd display function.
 			LCD_command(0x01); 
 			LCD_command(0x80);
 			delay(50);
