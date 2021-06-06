@@ -6,7 +6,8 @@
 
 void PORTB_INIT();
 void PORTD_INIT_UART();
-void delay(double sec);
+void delay_ms(double sec);
+void delay_micros(double sec);
 void LCD_command(char com);
 void LCD_Data(char data);
 void intialization();
@@ -190,11 +191,17 @@ double Distancetill100 (long double lat1,long double lat2,long double long1,long
 
 }
 //delay function
-void delay(double sec)
+void delay_ms(double sec)
 {
     unsigned int i,j;
     for(i=0;i<sec;i++)
-    for(j=0;j<100;j++);
+    for(j=0;j<1000;j++){};
+}
+void delay_micros(double sec)
+{
+		unsigned int i , j;
+		for(i=0;i<sec;i++)
+		for(j=0;j<5;j++){};
 }
 //LCD command function
 void LCD_command(char com) 
@@ -202,36 +209,37 @@ void LCD_command(char com)
     GPIO_PORTA_DATA_R &= ~0xE0;    //Rs,Rw,E=0 
     GPIO_PORTB_DATA_R = com;
     GPIO_PORTA_DATA_R |=0x80;   //E=1
-    delay(5);
+    delay_micros(1);
     GPIO_PORTA_DATA_R = 0x00;   //E=0   
+		if(com < 4)
+			delay_ms(2);
+		else
+			delay_micros(30);
 }
 //LCD data function
-void LCD_Data(char data)
+void LCD_Data(char data) 
 {
-    GPIO_PORTA_DATA_R = 0x00;
     GPIO_PORTA_DATA_R |= 0x20;  //Rs=1
     GPIO_PORTB_DATA_R = data;
     GPIO_PORTA_DATA_R |= 0x80;   //E=1
-    delay(5);
-    GPIO_PORTA_DATA_R &=~0x80;  //E=0  
+    delay_micros(1);
+    GPIO_PORTA_DATA_R &=~0xE0;  //E=0  
+	delay_ms(30);
 }
 //LCD intialization function
 void intialization() 
 {
     PORTA_INIT();
     PORTB_INIT();
-    delay(10);
-		LCD_command(0x30);
-    delay(0.5);
-		LCD_command(0x30);
-    delay(0.5);
+    delay_ms(20);
     LCD_command(0x30);
-    delay(0.5);
+    delay_ms(5);
+    LCD_command(0x30);
+    delay_ms(1);
+    LCD_command(0x30);
+	
     LCD_command(0x38);
-    delay(0.5);
     LCD_command(0x06);
-    delay(0.5);
     LCD_command(0x01);
-    delay(0.5);
     LCD_command(0x0F);
 }
