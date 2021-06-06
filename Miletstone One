@@ -16,7 +16,7 @@ void PORTF_INIT();
 uint8_t UART2_READ();
 long double toRadians(const long double degree);
 long double Calcdistance(long double lat1, long double long1, long double lat2, long double long2);
-double Distancetill100 (long double lat1,long double lat2,long double long1,long double long2);
+long double Distancetill100 (long double lat1,long double lat2,long double long1,long double long2);
 void BlueLEDOn();
 void sliceInt(long double s);
 
