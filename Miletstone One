@@ -11,13 +11,14 @@ void delay_micros(double sec);
 void LCD_command(char com);
 void LCD_Data(char data);
 void intialization();
-void LEDOn ( double accdistance );
 void PORTA_INIT();
 void PORTF_INIT();
 uint8_t UART2_READ();
 long double toRadians(const long double degree);
 long double Calcdistance(long double lat1, long double long1, long double lat2, long double long2);
 double Distancetill100 (long double lat1,long double lat2,long double long1,long double long2);
+void BlueLEDOn();
+
 
 int main()
 {
@@ -158,7 +159,7 @@ long double Calcdistance(long double lat1, long double long1,
         cos(lat1) * cos(lat2) *
         pow(sin(dlong / 2), 2);
 
-    distance = 2 * atan2(sqrt(distance), sqrt(distance - 1);
+    distance = 2 * atan2(sqrt(distance), sqrt(distance - 1));
 
     // Radius of Earth in Kilometers, R = 6371
    
@@ -177,14 +178,14 @@ double Distancetill100 (long double lat1,long double lat2,long double long1,long
     printf("%lf\n", accDistance);
     while (accDistance < 100)
     {
-        delay();
+        delay_ms(5);
         lat1 = lat2;
         long1 = long2;
-        scanf("%lf %lf", &lat2 , &long2);   //here we took the input from the user to test the code, but in the second milestone it will be from the GPS
+        scanf("%Lf %Lf", &lat2 , &long2);   //here we took the input from the user to test the code, but in the second milestone it will be from the GPS
         accDistance += Calcdistance(lat1, long1, lat2, long2);
-        printf("%lf\n", accDistance);
+        printf("%Lf\n", accDistance);
     }
-    BlueLEDOn ();
+    BlueLEDOn();
     return accDistance;
 
 }
