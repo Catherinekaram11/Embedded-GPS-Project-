@@ -45,6 +45,9 @@ int main()
 
     long double accdistance = Distancetill100(lat1, long1, lat2, long2);
     printf("the total distance:%Lfm\n", accdistance);
+    //send the data to the LCD
+    sliceInt(accdistance);
+
     
     return 0;
 }
@@ -249,11 +252,14 @@ void sliceInt(long double s)
     for (int i = 0; i < 3; i++)
     {
         c[i] = no[i] + '0';
-	//LCD data
-	LCD_Data(c[i]);
     }
-
     
-    
+    delay_ms(500);
+    LCD_Data(c[0]);
+    delay_micros(5);
+    LCD_Data(c[1]);
+    delay_micros(5);
+    LCD_Data(c[2]);
+    delay_ms(500);
 }
 
