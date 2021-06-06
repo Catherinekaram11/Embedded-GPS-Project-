@@ -36,6 +36,9 @@ int main()
 			LCD_Data('T');
 			delay_ms(500);
 		//use specific coordinates for the test
+		//the distance will be 81.2 m
+		//after that use these coordinates 30.102987539087902 31.33481212494709
+		//the total distance will be 177.27 m
     long double lat1 = 30.101773414316938, long1 = 31.33362007982015;
     long double lat2 = 30.102314652503107, long2 = 31.33418651261097;
 
