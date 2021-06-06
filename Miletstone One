@@ -57,11 +57,9 @@ int main()
         printf("the total distance:%lfm\n", accdistance);
 }
 
-void LEDOn ( double accdistance )
+void BlueLEDOn (void)
 {
-   if (accdistance >= 100)
-   { GPIO_PORTF_DATA_R=0x0004; }
-   
+   GPIO_PORTF_DATA_R=0x0004;    
 }
 
 
@@ -186,7 +184,7 @@ double Distancetill100 (long double lat1,long double lat2,long double long1,long
         accDistance += Calcdistance(lat1, long1, lat2, long2);
         printf("%lf\n", accDistance);
     }
-    
+    BlueLEDOn ();
     return accDistance;
 
 }
