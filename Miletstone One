@@ -23,33 +23,18 @@ void sliceInt(long double s);
 
 int main()
 {
-    intialization();
-		
-			LCD_command(0x01); 
-			LCD_command(0x80);
-			delay_ms(500);
-			LCD_Data('D');
-			delay_micros(5);
-			LCD_Data('I');
-			delay_micros(5);
-			LCD_Data('S');
-			delay_micros(5);
-			LCD_Data('T');
-			delay_ms(500);
-		//use specific coordinates for the test
-		//the distance will be 81.2 m
-		//after that use these coordinates 30.102987539087902 31.33481212494709
-		//the total distance will be 177.27 m
-    long double lat1 = 30.101773414316938, long1 = 31.33362007982015;
-    long double lat2 = 30.102314652503107, long2 = 31.33418651261097;
-
-    long double accdistance = Distancetill100(lat1, long1, lat2, long2);
-    printf("the total distance:%Lfm\n", accdistance);
-    //send the data to the LCD
-    sliceInt(accdistance);
-
-    
-    return 0;
+    	PORTD_INIT_UART();
+	// testing for first milestine only
+	long double lat1 = 30.101773414316938, long1 = 31.33362007982015;
+  	long double lat2 = 30.102314652503107, long2 = 31.33418651261097;
+	long double accdistance = Distancetill100(lat1, long1, lat2, long2);
+	printf("the total distance:%Lfm\n", accdistance);
+    	intialization();
+	LCD_command(0x01); 
+	LCD_command(0x80);	
+	// parsing the integer into array of strings to be written in the 
+    	sliceInt(accdistance);
+	return 0;
 }
 
 void BlueLEDOn (void)
