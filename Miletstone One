@@ -23,39 +23,26 @@ void BlueLEDOn();
 int main()
 {
     intialization();
-		while(1)
-		{
-			PORTF_INIT();
-			// double calcdist = Distancetill100 () 
-			//this input passed for the Distancetill100 function will be taken from the gps in the second milestone.
-			// then calcdist will be passed to toString function then will be passed to lcd display function.
+		
 			LCD_command(0x01); 
 			LCD_command(0x80);
-			delay(50);
+			delay_ms(500);
 			LCD_Data('D');
-			delay(1);
+			delay_micros(5);
 			LCD_Data('I');
-			delay(1);
+			delay_micros(5);
 			LCD_Data('S');
-			delay(1);
+			delay_micros(5);
 			LCD_Data('T');
-                        delay(1);
-                        LCD_Data('A');
-                        delay(1);
-                        LCD_Data('N');
-                        delay(1);
-                        LCD_Data('C');
-                        delay(1);
-                        LCD_Data('E');
-			delay(50);
-						
-		}
-		
-	//to calculate the distance, we will use exact coordinates as a test
-	long double lat1 = 30.101773414316938, long1 = 31.33362007982015;
-    	long double lat2 = 30.102314652503107, long2 = 31.33418651261097;
-	long double accdistance = DistanceTill100(lat1, long1, lat2, long2);
-        printf("the total distance:%lfm\n", accdistance);
+			delay_ms(500);
+		//use specific coordinates for the test
+    long double lat1 = 30.101773414316938, long1 = 31.33362007982015;
+    long double lat2 = 30.102314652503107, long2 = 31.33418651261097;
+
+    long double accdistance = Distancetill100(lat1, long1, lat2, long2);
+    printf("the total distance:%Lfm\n", accdistance);
+    
+    return 0;
 }
 
 void BlueLEDOn (void)
