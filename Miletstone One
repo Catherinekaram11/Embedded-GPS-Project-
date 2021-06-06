@@ -162,7 +162,7 @@ double Distancetill100 (long double lat1,long double lat2,long double long1,long
 {
 
     long double accDistance = Calcdistance(lat1 , long1, lat2, long2);
-    printf("%lf\n", accDistance);
+    printf("%Lf\n", accDistance);
     while (accDistance < 100)
     {
         delay_ms(5);
