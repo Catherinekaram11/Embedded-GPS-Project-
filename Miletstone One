@@ -18,6 +18,7 @@ long double toRadians(const long double degree);
 long double Calcdistance(long double lat1, long double long1, long double lat2, long double long2);
 double Distancetill100 (long double lat1,long double lat2,long double long1,long double long2);
 void BlueLEDOn();
+void sliceInt(long double s);
 
 
 int main()
@@ -232,3 +233,27 @@ void intialization()
     LCD_command(0x01);
     LCD_command(0x0F);
 }
+void sliceInt(long double s)
+{
+    
+    int x = s; int count = 2;
+    int no[3];
+    while(count + 1)
+    {
+        no[count] = x % 10;
+        x /= 10;
+        count --;
+    }
+    //convert to char
+    char c[3];
+    for (int i = 0; i < 3; i++)
+    {
+        c[i] = no[i] + '0';
+	//LCD data
+	LCD_Data(c[i]);
+    }
+
+    
+    
+}
+
