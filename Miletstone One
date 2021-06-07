@@ -83,7 +83,7 @@ void PORTD_INIT_UART()
     UART2_IBRD_R = 520;
     UART2_FBRD_R = 53;
     UART2_LCRH_R = 0x0070;
-    UART2_CTL_R = 0x0001;
+    UART2_CTL_R = 0x00301;
 }
 void PORTF_INIT() //Port F Initialization
 { 
