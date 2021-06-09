@@ -198,23 +198,22 @@ void LCD_command(char com)
 //LCD data function
 void LCD_Data(char data) 
 {
-    GPIO_PORTA_DATA_R |= 0x20;  //Rs=1
+    GPIO_PORTA_DATA_R = 0x20;  //Rs=1
     GPIO_PORTB_DATA_R = data;
-    GPIO_PORTA_DATA_R |= 0x80;   //E=1
+   GPIO_PORTA_DATA_R =0x80 | 0x20;   //E=1
     delay_micros(1);
-    GPIO_PORTA_DATA_R &=~0xE0;  //E=0  
-	delay_ms(30);
+    GPIO_PORTA_DATA_R |=0x00;  //E=0  
+	 delay_micros(40);
 }
 //LCD intialization function
 void intialization() 
 {
     PORTA_INIT();
     PORTB_INIT();
-    delay_ms(20);
     LCD_command(0x30);
     delay_ms(5);
     LCD_command(0x30);
-    delay_ms(1);
+    delay_micros(100);
     LCD_command(0x30);
     LCD_command(0x38);
     LCD_command(0x06);
