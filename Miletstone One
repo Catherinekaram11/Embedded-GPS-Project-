@@ -30,8 +30,15 @@ int main()
 	long double accdistance = Distancetill100(lat1, long1, lat2, long2);
 	printf("the total distance:%Lfm\n", accdistance);
     	intialization();
-	LCD_command(0x01); 
-	LCD_command(0x80);	
+    LCD_command(0x01);
+    LCD_command(0x80);
+     delay_ms(300);
+    LCD_data('D');
+    LCD_data('I');
+    LCD_data('S');
+    LCD_data('T');
+     delay_ms(500);
+    
 	// parsing the integer into array of char to be written in the LCD
     	sliceInt(accdistance);
 	return 0;
