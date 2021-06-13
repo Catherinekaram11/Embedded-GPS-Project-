@@ -91,12 +91,7 @@ for(y=0;y<100;y++){
         GPGGA[y] = Parsing[j++];
     }
 
-    if(GPGGA[0] == 'A'){
-        ID = strtok(GPGGA,",");
-        Time = strtok(NULL,",");
-        Lat1= strtok(NULL,",");
-        direction= strtok(NULL,",");
-        Long1 = strtok(NULL,",");
+  
 
         double longitude1 = atof(Long1);
         res1 = (int)(longitude1 / 100);
