@@ -1,6 +1,37 @@
 void display_distance(double distance);
 
 
+
+int main(){
+
+
+        Ports_init();
+        LCD_init();
+
+        //double lat1 = 0.0;
+        //double lon1 = 0.0;
+        //double *lat;
+        //double *lon;
+        //lat = &lat1;
+        //lon = &lon1;
+        //display_distance(125);
+        //GPS_Read();
+
+        while(1)
+        {
+            gps();
+            //char data = UART2_READ();
+            //UART0_Write(data);
+
+        }
+
+
+
+
+    }
+
+
+
 // Port A updated for UART
 
 void PORTA_INIT() //Port A initialization
