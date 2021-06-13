@@ -1,5 +1,7 @@
 void display_distance(double distance);
-
+double toRadians(const double degree);
+double Calcdistance(double lat1, double long1, double lat2, double long2);
+//we used the updated distance version
 
 
 int main(){
@@ -22,7 +24,7 @@ int main(){
             gps();
             //char data = UART2_READ();
             //UART0_Write(data);
-
+                
         }
 
 
@@ -121,7 +123,12 @@ void display_distance(double distance)
 for(y=0;y<100;y++){
         GPGGA[y] = Parsing[j++];
     }
-
+  if(GPGGA[0] == 'A'){
+        ID = strtok(GPGGA,",");
+        Time = strtok(NULL,",");
+        Lat1= strtok(NULL,",");
+        direction= strtok(NULL,",");
+        Long1 = strtok(NULL,",");
   
 
         double longitude1 = atof(Long1);
@@ -138,4 +145,47 @@ for(y=0;y<100;y++){
         display_distance(longRes);}
 }
 
+double toRadians(const double degree)
+{
+  
+    double one_deg = (PI) / 180;
+    return (one_deg * degree);
+}
 
+double Calcdistance(double lat1, double long1,
+    double lat2, double long2)
+{
+   //convert the input latitude and longtitude to radian 
+    lat1 = toRadians(lat1);
+    long1 = toRadians(long1);
+    lat2 = toRadians(lat2);
+    long2 = toRadians(long2);
+
+    // Haversine Formula
+    double dlong = long2 - long1;
+    double dlat = lat2 - lat1;
+    
+    if (dlong < 0)
+    {
+        dlong *= -1;
+    }
+    if (dlat < 0)
+    {
+        dlat *= -1;
+    }
+
+    double distance = pow(sin(dlat / 2), 2) +
+        cos(lat1) * cos(lat2) *
+        pow(sin(dlong / 2), 2);
+
+    distance = 2 * atan2(sqrt(distance), sqrt(distance - 1);
+
+    // Radius of Earth in Kilometers, R = 6371
+   
+    double R = 6371*1000;
+
+    // Calculate the distance
+    distance = distance * R;
+
+    return distance;
+}
