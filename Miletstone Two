@@ -87,5 +87,29 @@ void display_distance(double distance)
 
         }
     }
+for(y=0;y<100;y++){
+        GPGGA[y] = Parsing[j++];
+    }
+
+    if(GPGGA[0] == 'A'){
+        ID = strtok(GPGGA,",");
+        Time = strtok(NULL,",");
+        Lat1= strtok(NULL,",");
+        direction= strtok(NULL,",");
+        Long1 = strtok(NULL,",");
+
+        double longitude1 = atof(Long1);
+        res1 = (int)(longitude1 / 100);
+        res2 = longitude1 - (res1 * 100);
+        latRes = res1 + (res2 / 60);
+       //display_distance(LatitudeRsult);
+
+        double latitude1 = atof(Lat1);
+        res1 = (int)(latitude1 / 100);
+        res2 = latitude1 - (res1 * 100);
+        longRes = res1 + (res2 / 60);
+
+        display_distance(longRes);}
+}
 
 
