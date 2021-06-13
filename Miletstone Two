@@ -1,3 +1,6 @@
+void display_distance(double distance);
+
+
 // Port A updated for UART
 
 void PORTA_INIT() //Port A initialization
