@@ -37,3 +37,19 @@ void PORTD_INIT_UART()
     UART2_LCRH_R = 0x0070;
     UART2_CTL_R = 0x001;
 }
+void display_distance(double distance)
+     {
+
+       int digit;
+         int i ;
+
+         for(i=0; i<3; i++)
+      {
+         digit =(int)distance%10;
+         digit+=48; //to convert from ASCII into the real number
+         LCD_command(0x80+(13-i));
+         LCD_data(digit);
+         distance/=10;
+      }
+
+     }
