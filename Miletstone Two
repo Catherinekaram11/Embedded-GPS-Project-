@@ -56,3 +56,36 @@ void display_distance(double distance)
       }
 
      }
+     void gps(){
+
+
+    double long1;
+    double lat1;
+    // double Rlat;
+    // double Rlong;
+    double res1;
+    double res2;
+
+    char* ID;
+    char* Time;
+    char* Long1;
+    char* direction;
+    char* Lat1;
+    char Parsing[200];
+    char GPGGA[50];
+    int i;
+    int j=0;
+    int y;
+
+
+    for(i=0;i<150;i++){
+        while ((UART2_FR_R & 0x10) != 0) {}
+        Parsing[i] = UART2_DR_R;
+        if(Parsing[i]=='A'&& Parsing[i-1] =='G'){
+            //check for gpgga line and takes i of "A" in j
+            j=i;
+
+        }
+    }
+
+
